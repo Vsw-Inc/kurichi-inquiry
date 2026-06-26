@@ -41,8 +41,11 @@ export default function LP() {
               <small>by Vsw株式会社</small>
             </p>
             <div className="ku-hero-cta">
+              <a href="https://line.me/R/ti/p/@552gvrkj" target="_blank" rel="noreferrer" className="ku-btn-line">
+                LINEで友だち追加 <span>+</span>
+              </a>
               <a href="#contact" className="ku-btn-primary">
-                お問い合わせを試す <span>→</span>
+                お問い合わせフォーム <span>→</span>
               </a>
               <a href="#about" className="ku-btn-ghost">
                 サービス詳細 ↓
@@ -224,11 +227,31 @@ export default function LP() {
       <section className="ku-section ku-contact" id="contact">
         <div className="ku-section-num">05</div>
         <div className="ku-section-label">CONTACT</div>
-        <h2 className="serif">無料デモのお申込み。</h2>
+        <h2 className="serif">お問い合わせ。</h2>
         <p className="ku-contact-lead">
-          実際にクリチちゃんとお話しいただけます。<br />
+          クリチちゃん（LINE）に直接話しかけるか、フォームからお問い合わせください。<br />
           貴社サービス導入のご相談も承ります。
         </p>
+
+        <div className="ku-contact-line">
+          <div className="ku-contact-line-info">
+            <div className="ku-contact-line-h">💬 LINEで気軽に話しかける</div>
+            <div className="ku-contact-line-desc">
+              クリチ公式LINEに友だち追加して、クリチちゃんに何でも聞いてみてください🍔<br />
+              <small>アカウント：<code>@552gvrkj</code></small>
+            </div>
+          </div>
+          <a
+            href="https://line.me/R/ti/p/@552gvrkj"
+            target="_blank"
+            rel="noreferrer"
+            className="ku-btn-line big"
+          >
+            LINEで友だち追加 <span>+</span>
+          </a>
+        </div>
+
+        <div className="ku-contact-or">― または、フォームから ―</div>
         <LeadForm />
       </section>
 
@@ -257,7 +280,8 @@ export default function LP() {
           </div>
           <div>
             <div className="ku-footer-h">お問い合わせ</div>
-            <a href="#contact">デモ依頼</a>
+            <a href="https://line.me/R/ti/p/@552gvrkj" target="_blank" rel="noreferrer">💬 LINEで聞く</a>
+            <a href="#contact">フォーム</a>
             <a href="https://vsw.co.jp" target="_blank" rel="noreferrer">Vsw公式 ↗</a>
           </div>
         </div>

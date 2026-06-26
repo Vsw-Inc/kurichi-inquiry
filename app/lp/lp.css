@@ -586,3 +586,91 @@
   .ku-footer { padding: 40px 18px 30px; }
   .ku-footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
 }
+
+/* ========== LINE ボタン ========== */
+.ku-btn-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #06c755;
+  color: #ffffff !important;
+  padding: 18px 32px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 24px rgba(6, 199, 85, 0.3);
+  text-decoration: none;
+}
+.ku-btn-line:hover {
+  background: #05a647;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(6, 199, 85, 0.4);
+}
+.ku-btn-line span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+}
+.ku-btn-line.big {
+  padding: 22px 40px;
+  font-size: 16px;
+}
+
+/* CONTACT LINE セクション */
+.ku-contact-line {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 32px 36px;
+  background: linear-gradient(135deg, rgba(6, 199, 85, 0.1), rgba(6, 199, 85, 0.02));
+  border: 1.5px solid rgba(6, 199, 85, 0.25);
+  border-radius: 16px;
+  margin-bottom: 36px;
+}
+.ku-contact-line-info {
+  flex: 1;
+  min-width: 260px;
+}
+.ku-contact-line-h {
+  font-size: 18px;
+  font-weight: 700;
+  color: #04a040;
+  margin-bottom: 8px;
+}
+.ku-contact-line-desc {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+.ku-contact-line-desc small {
+  font-size: 12px;
+  color: var(--muted);
+}
+.ku-contact-line-desc code {
+  background: rgba(6, 199, 85, 0.1);
+  color: #04a040;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 12px;
+  font-weight: 700;
+}
+.ku-contact-or {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+  margin: 0 0 24px;
+  font-weight: 600;
+}
