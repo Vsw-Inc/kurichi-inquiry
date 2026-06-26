@@ -1,0 +1,111 @@
+.legal {
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 500px at 50% -10%, rgba(200, 165, 112, 0.08), transparent 70%),
+    #0b0907;
+  color: #f6f2ea;
+  font-family: "Noto Sans JP", -apple-system, sans-serif;
+  line-height: 1.85;
+  padding: 48px 24px 80px;
+}
+.legal-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.legal-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  color: #c8a570;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+.legal h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(32px, 5vw, 48px);
+  letter-spacing: 0.04em;
+  margin: 0 0 16px;
+  font-weight: 500;
+  color: #c8a570;
+}
+.serif {
+  font-family: "Cormorant Garamond", serif;
+}
+.legal-meta {
+  font-size: 12px;
+  color: rgba(246, 242, 234, 0.55);
+  line-height: 1.95;
+  margin: 0 0 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(200, 165, 112, 0.18);
+}
+.legal section {
+  margin-bottom: 36px;
+}
+.legal h2 {
+  font-size: 17px;
+  color: #c8a570;
+  letter-spacing: 0.04em;
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(200, 165, 112, 0.18);
+  font-weight: 600;
+}
+.legal p {
+  font-size: 14px;
+  color: rgba(246, 242, 234, 0.85);
+  line-height: 1.95;
+  margin: 0 0 12px;
+}
+.legal p strong {
+  color: #c8a570;
+  font-weight: 600;
+}
+.legal ul {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+}
+.legal ul li {
+  font-size: 14px;
+  color: rgba(246, 242, 234, 0.85);
+  line-height: 1.85;
+  padding: 6px 0 6px 22px;
+  position: relative;
+}
+.legal ul li::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  top: 6px;
+  color: #c8a570;
+  font-weight: 700;
+}
+.legal ul li strong {
+  color: #c8a570;
+  font-weight: 600;
+}
+.legal-foot {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(200, 165, 112, 0.18);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.legal-foot a {
+  font-size: 13px;
+  color: #c8a570;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+.legal-foot a:hover {
+  color: #f5d76e;
+}
+
+@media (max-width: 600px) {
+  .legal { padding: 32px 18px 60px; }
+  .legal h1 { font-size: 28px; }
+  .legal h2 { font-size: 15px; }
+}

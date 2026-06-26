@@ -1,0 +1,583 @@
+/* ============== VSW AI BUSINESS LP ============== */
+.biz {
+  --bg: #0e0c08;
+  --ink: #faf8f3;
+  --ink-2: #e8dfc8;
+  --gold: #d4a14a;
+  --gold-deep: #b0883c;
+  --yellow: #e8c270;
+  --muted: rgba(250, 248, 243, 0.55);
+  --line: rgba(212, 161, 74, 0.15);
+
+  background:
+    radial-gradient(900px 600px at 50% -10%, rgba(212, 161, 74, 0.18), transparent 60%),
+    var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+.biz .serif {
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+.biz a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+.biz a:hover { color: var(--yellow); }
+
+/* HEADER */
+.biz-header {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 26px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: rgba(14, 12, 8, 0.85);
+  backdrop-filter: blur(20px);
+  z-index: 100;
+  border-bottom: 1px solid var(--line);
+}
+.biz-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.biz-logo .serif {
+  font-size: 26px;
+  color: var(--gold);
+}
+.biz-logo-sub {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+}
+.biz-nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.biz-nav a {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.biz-nav a:hover { color: var(--gold); }
+
+/* HERO */
+.biz-hero {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 32px 100px;
+  position: relative;
+}
+.biz-hero-text { max-width: 800px; }
+.biz-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.biz-hero h1.serif {
+  font-size: 64px;
+  line-height: 1.15;
+  margin: 0 0 26px;
+  color: var(--ink);
+  font-weight: 500;
+}
+.biz-hero h1 em { font-style: normal; color: var(--gold); }
+.biz-lead {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--ink-2);
+  margin: 0 0 36px;
+  max-width: 600px;
+}
+.biz-lead strong { color: var(--gold); font-weight: 600; }
+.biz-hero-stats {
+  display: flex;
+  gap: 36px;
+  margin: 36px 0;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.biz-stat-num {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 44px;
+  color: var(--gold);
+  line-height: 1;
+}
+.biz-stat-num em {
+  font-style: normal;
+  font-size: 16px;
+  margin-left: 4px;
+  color: var(--ink-2);
+}
+.biz-stat-label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.biz-hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.biz-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--bg) !important;
+  padding: 18px 32px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 24px rgba(212, 161, 74, 0.3);
+}
+.biz-btn-primary:hover {
+  background: var(--yellow);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(232, 194, 112, 0.4);
+}
+.biz-btn-primary span { transition: transform 0.2s; }
+.biz-btn-primary:hover span { transform: translateX(4px); }
+.biz-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 28px;
+  border-radius: 9999px;
+  border: 1px solid var(--line);
+  color: var(--ink-2) !important;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  transition: border-color 0.2s, color 0.2s;
+}
+.biz-btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold) !important;
+}
+
+/* SECTION */
+.biz-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 32px;
+  border-top: 1px solid var(--line);
+}
+.biz-section-num {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 72px;
+  color: var(--gold-deep);
+  line-height: 1;
+  margin-bottom: -10px;
+  opacity: 0.5;
+}
+.biz-section-label {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 10px 0 30px;
+}
+.biz-section h2.serif {
+  font-size: 48px;
+  line-height: 1.2;
+  margin: 0 0 50px;
+  color: var(--ink);
+}
+
+/* SERVICE GRID */
+.biz-service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.biz-feature {
+  padding: 32px 28px;
+  background: rgba(212, 161, 74, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.biz-feature:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+.biz-feature-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+.biz-feature h3 {
+  font-size: 18px;
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+.biz-feature p {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* INDUSTRY GRID */
+.biz-industry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+.biz-industry {
+  padding: 26px 22px;
+  background: rgba(212, 161, 74, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.biz-industry:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+.biz-industry-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.biz-industry h3 {
+  font-size: 16px;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+.biz-industry p {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+.biz-industry-ref {
+  display: inline-block;
+  font-size: 10px;
+  padding: 4px 10px;
+  background: rgba(212, 161, 74, 0.12);
+  color: var(--gold);
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+/* PRICING */
+.biz-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 20px;
+}
+.biz-pricing {
+  position: relative;
+  padding: 36px 30px;
+  background: rgba(212, 161, 74, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.biz-pricing.featured {
+  background: linear-gradient(180deg, rgba(212, 161, 74, 0.15), rgba(212, 161, 74, 0.05));
+  border-color: var(--gold);
+  transform: scale(1.04);
+  box-shadow: 0 12px 36px rgba(212, 161, 74, 0.2);
+}
+.biz-pricing-badge {
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  background: var(--gold);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  letter-spacing: 0.1em;
+}
+.biz-pricing-tier {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.biz-pricing-target {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+.biz-pricing-price {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 36px;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 26px;
+}
+.biz-pricing-price em {
+  font-style: normal;
+  font-size: 18px;
+  margin-left: 4px;
+  color: var(--ink-2);
+}
+.biz-pricing-price span {
+  font-size: 11px;
+  font-family: "Noto Sans JP", sans-serif;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  margin-left: 8px;
+}
+.biz-pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.biz-pricing-features li {
+  font-size: 13px;
+  padding: 8px 0;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--line);
+}
+.biz-pricing-features li::before {
+  content: "✓";
+  color: var(--gold);
+  font-weight: 700;
+  margin-right: 8px;
+}
+.biz-pricing-features li:last-child { border-bottom: none; }
+.biz-pricing-note {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* CASE */
+.biz-case {
+  padding: 36px;
+  background: rgba(212, 161, 74, 0.06);
+  border: 1px solid var(--gold);
+  border-radius: 16px;
+}
+.biz-case-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.biz-case-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.biz-case-meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+.biz-case-tag {
+  background: var(--gold);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+}
+.biz-case-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 18px;
+  margin: 24px 0;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.biz-case-num {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 32px;
+  color: var(--gold);
+  line-height: 1;
+}
+.biz-case-num em {
+  font-style: normal;
+  font-size: 14px;
+  color: var(--ink-2);
+  margin-left: 4px;
+}
+.biz-case-lbl {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-top: 5px;
+}
+.biz-case-quote {
+  font-size: 16px;
+  color: var(--ink-2);
+  font-style: italic;
+  line-height: 1.75;
+  padding-left: 16px;
+  border-left: 3px solid var(--gold);
+  margin: 24px 0;
+}
+.biz-case-quote span {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  font-style: normal;
+}
+.biz-case-link {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+/* PROCESS */
+.biz-process {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+}
+.biz-process-step {
+  padding: 24px 20px;
+  background: rgba(212, 161, 74, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.biz-process-num {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.biz-process-step h3 {
+  font-size: 16px;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+.biz-process-step p {
+  font-size: 12.5px;
+  color: var(--ink-2);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* CONTACT */
+.biz-contact { padding-bottom: 100px; }
+.biz-contact-lead {
+  font-size: 16px;
+  color: var(--ink-2);
+  line-height: 1.8;
+  margin: 0 0 40px;
+}
+.biz-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+.biz-contact-card {
+  padding: 26px 22px;
+  background: rgba(212, 161, 74, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.biz-contact-h {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.biz-contact-v {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+.biz-contact-v strong {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* FOOTER */
+.biz-footer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 60px 32px 40px;
+  border-top: 1px solid var(--line);
+}
+.biz-footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 40px;
+}
+.biz-footer-logo {
+  font-size: 22px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.biz-footer-desc {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+.biz-footer-h {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.biz-footer a {
+  display: block;
+  font-size: 13px;
+  color: var(--ink-2);
+  padding: 5px 0;
+}
+.biz-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 720px) {
+  .biz-header { padding: 16px 18px; flex-wrap: wrap; gap: 12px; }
+  .biz-nav { gap: 14px; flex-wrap: wrap; }
+  .biz-nav a { font-size: 10px; }
+  .biz-hero { padding: 50px 18px 60px; }
+  .biz-hero h1.serif { font-size: 38px; }
+  .biz-lead { font-size: 14.5px; }
+  .biz-hero-stats { gap: 20px; flex-wrap: wrap; }
+  .biz-stat-num { font-size: 32px; }
+  .biz-section { padding: 50px 18px; }
+  .biz-section h2.serif { font-size: 32px; }
+  .biz-section-num { font-size: 54px; }
+  .biz-pricing.featured { transform: none; }
+  .biz-footer { padding: 40px 18px 30px; }
+  .biz-footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+}

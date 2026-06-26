@@ -1,0 +1,16 @@
+{
+  "crons": [
+    {
+      "path": "/api/keep-alive",
+      "schedule": "0 21 * * *"
+    }
+  ],
+  "functions": {
+    "app/api/chat/route.ts": {
+      "maxDuration": 30
+    },
+    "app/api/line-webhook/route.ts": {
+      "maxDuration": 25
+    }
+  }
+}
