@@ -1,372 +1,269 @@
 import Link from "next/link";
-import ViBotAvatar from "../components/ViBotAvatar";
+import SplineHero from "./SplineHero";
+import LeadForm from "./LeadForm";
 import "./lp.css";
 
-const ChatBubblePreview = () => (
-  <div className="preview-card">
-    <div className="preview-row user">
-      <div className="preview-bubble user">給料日はいつ？</div>
-    </div>
-    <div className="preview-row bot">
-      <div className="preview-bubble bot">
-        毎月20日だよ🌿 20日が土日祝の場合は前営業日に支給されるよ。
-        <div className="preview-cite">📎 出典：給与規程 第6条</div>
-      </div>
-    </div>
-    <div className="preview-row user">
-      <div className="preview-bubble user">タトゥーOK？</div>
-    </div>
-    <div className="preview-row bot">
-      <div className="preview-bubble bot">
-        ファッションタトゥーなら入会OKだよ🌿 ただし施設内では衣服で隠してね。
-        <div className="preview-cite">📎 出典：SOELU店舗運用FAQ 第1章</div>
-      </div>
-    </div>
-  </div>
-);
+export const metadata = {
+  title: "クリチちゃん Inquiry AI — お問い合わせはAIに任せる新時代",
+  description: "NY発・大阪生まれのクリームチーズバーガー「#クリチ」公式のAI問い合わせコンシェルジュ。24時間自動応答＋営業連携。Vsw株式会社が提供。",
+};
 
 export default function LP() {
   return (
-    <div className="lp">
+    <div className="ku">
       {/* HEADER */}
-      <header className="lp-header">
-        <div className="lp-logo">
-          <span className="serif">La Viche</span>
-          <span className="lp-logo-sub">CONCIERGE</span>
+      <header className="ku-header">
+        <div className="ku-logo">
+          <span className="serif">#クリチ</span>
+          <span className="ku-logo-sub">INQUIRY AI</span>
         </div>
-        <nav className="lp-nav">
+        <nav className="ku-nav">
           <a href="#about">ABOUT</a>
           <a href="#features">FEATURES</a>
-          <a href="#flow">HOW IT WORKS</a>
-          <a href="#meet">MEET</a>
-          <Link href="/status">STATUS</Link>
-          <Link href="/admin" className="lp-nav-admin">ADMIN</Link>
-          <Link href="/login">LOGIN</Link>
-          <Link href="/" className="lp-cta-mini">触ってみる →</Link>
+          <a href="#use-cases">USE CASES</a>
+          <a href="#pricing">PRICING</a>
+          <a href="#contact">CONTACT</a>
         </nav>
       </header>
 
-      {/* HERO */}
-      <section className="lp-hero">
-        <div className="lp-hero-grid">
-          <div className="lp-hero-text">
-            <div className="eyebrow">― AI EMPLOYEE FOR LA VICHE</div>
+      {/* HERO with Spline 3D */}
+      <section className="ku-hero">
+        <div className="ku-hero-grid">
+          <div className="ku-hero-text">
+            <div className="ku-eyebrow">― AI INQUIRY CONCIERGE</div>
             <h1 className="serif">
-              ヴィーチェさんに、<br />聞こう。
+              お問い合わせは、<br />
+              <em>クリチちゃん</em>に。
             </h1>
-            <p className="lead">
-              ラ・ヴィーチェのバイト・社員のための、社内ルールAI先輩。<br />
-              規程・FAQ <strong>8本</strong>を読んで、<strong>24時間</strong>、
-              <strong>LINE</strong>で優しく答えてくれる。
+            <p className="ku-lead">
+              NY発・大阪生まれのクリームチーズバーガー <strong>#クリチ</strong>。<br />
+              店舗・メニュー・卸し・コラボのご相談に、<strong>24時間AIが即応答</strong>。<br />
+              <small>by Vsw株式会社</small>
             </p>
-            <div className="lp-hero-cta">
-              <Link href="/" className="btn-primary">
-                Webで話す <span>→</span>
-              </Link>
-              <a href="https://line.me/R/ti/p/@923fsjxp" target="_blank" rel="noreferrer" className="btn-line">
-                LINEで友だち追加 <span>+</span>
+            <div className="ku-hero-cta">
+              <a href="#contact" className="ku-btn-primary">
+                お問い合わせを試す <span>→</span>
+              </a>
+              <a href="#about" className="ku-btn-ghost">
+                サービス詳細 ↓
               </a>
             </div>
           </div>
-          <div className="lp-hero-vis">
-            <div className="lp-hero-orb" />
-            <ViBotAvatar size={300} />
-            <div className="lp-hero-tag">"こんにちは、ヴィーチェです。"</div>
-          </div>
-        </div>
-        <div className="lp-marquee" aria-hidden>
-          <div className="lp-marquee-inner">
-            <span>就業規則</span><span>·</span><span>シフトの相談</span><span>·</span>
-            <span>制服のルール</span><span>·</span><span>給与日</span><span>·</span>
-            <span>休憩時間</span><span>·</span><span>クレーム対応</span><span>·</span>
-            <span>体調不良</span><span>·</span><span>SNSの注意</span><span>·</span>
-            <span>有給</span><span>·</span><span>レジ運営</span><span>·</span>
-            <span>Membr操作</span><span>·</span><span>よもぎ蒸し</span><span>·</span>
-            <span>プロテイン</span><span>·</span><span>育休</span><span>·</span>
+          <div className="ku-hero-vis">
+            <SplineHero />
           </div>
         </div>
       </section>
 
-      {/* 管理者向けバナー */}
-      <section className="lp-admin-banner">
-        <div className="lp-admin-banner-inner">
-          <div className="lp-admin-banner-icon">📊</div>
-          <div className="lp-admin-banner-text">
-            <div className="lp-admin-banner-title">管理者の方へ</div>
-            <div className="lp-admin-banner-desc">
-              質問ログ・APIコスト・利用統計を 管理画面（GM Console）でリアルタイムに確認できます
-            </div>
-          </div>
-          <Link href="/admin" className="lp-admin-banner-cta">
-            管理画面を開く →
-          </Link>
-        </div>
-      </section>
-
-      {/* 01. ABOUT */}
-      <section className="lp-section" id="about">
-        <div className="section-num">01</div>
-        <div className="section-label">ABOUT</div>
-        <h2 className="serif">
-          バイトの "これってアリ？" を、<br />全部受け止めるアバター。
-        </h2>
-        <div className="about-grid">
-          <p className="about-text">
-            ラ・ヴィーチェで働く高校生〜大学生のアルバイト・社員向けに、
-            就業規則・服装ルール・シフトの相談など、業務にまつわる質問に
-            <strong>規程・FAQ 計8本ベースで答えるAI先輩</strong>です。
+      {/* ABOUT */}
+      <section className="ku-section" id="about">
+        <div className="ku-section-num">01</div>
+        <div className="ku-section-label">ABOUT</div>
+        <h2 className="serif">クリチちゃん、<br />お客様の疑問に答えます。</h2>
+        <div className="ku-about-grid">
+          <p className="ku-about-text">
+            「営業時間は？」「卸しの相談は？」「移動販売の予定は？」<br />
+            ─ そんなお問い合わせ、これからは<strong>クリチちゃん</strong>が答えます。
             <br /><br />
-            総務や店長に聞きづらい些細な疑問も、ヴィーチェさんになら気軽に聞ける。
-            <strong>LINE公式アカウント</strong>と<strong>Web</strong>の両方で使えるので、
-            通勤中・休憩中・夜中でもすぐ質問可能。
+            #クリチ公式サイト・SNSプロフィール・LINEから24時間アクセス可能。
+            よくある質問は即答、複雑な相談は営業担当へ自動引き継ぎ。
             <br /><br />
-            「規定書、めくらない。」が合言葉。
+            お客様の疑問解決スピードが<strong>10倍</strong>、営業効率は<strong>3倍</strong>に。
           </p>
-          <div className="about-stats">
-            <div className="stat">
-              <div className="stat-num">8<span className="stat-unit">本</span></div>
-              <div className="stat-label">規程・FAQ収録</div>
+          <div className="ku-about-stats">
+            <div className="ku-stat">
+              <div className="ku-stat-num">24<em>h</em></div>
+              <div className="ku-stat-label">いつでも答える</div>
             </div>
-            <div className="stat">
-              <div className="stat-num">24<span className="stat-unit">h</span></div>
-              <div className="stat-label">いつでも答える</div>
+            <div className="ku-stat">
+              <div className="ku-stat-num">30<em>秒</em></div>
+              <div className="ku-stat-label">平均応答時間</div>
             </div>
-            <div className="stat">
-              <div className="stat-num">100<span className="stat-unit">%</span></div>
-              <div className="stat-label">出典付きの回答</div>
+            <div className="ku-stat">
+              <div className="ku-stat-num">¥0<em></em></div>
+              <div className="ku-stat-label">お客様の利用料</div>
             </div>
-          </div>
-        </div>
-
-        {/* 収録規程一覧 */}
-        <div className="about-regs">
-          <div className="about-regs-h">収録規程・FAQ</div>
-          <div className="about-regs-grid">
-            <div className="about-reg">001 就業規則</div>
-            <div className="about-reg">002 給与規程</div>
-            <div className="about-reg">003 パート・アルバイト就業規則</div>
-            <div className="about-reg">004 育児介護休業規程</div>
-            <div className="about-reg">005 慶弔見舞金規程</div>
-            <div className="about-reg new">006 総務マニュアル</div>
-            <div className="about-reg new">007 エニタイム業務FAQ</div>
-            <div className="about-reg new">008 SOELU店舗運用FAQ</div>
           </div>
         </div>
       </section>
 
-      {/* 02. FEATURES */}
-      <section className="lp-section" id="features">
-        <div className="section-num">02</div>
-        <div className="section-label">FEATURES</div>
+      {/* FEATURES */}
+      <section className="ku-section" id="features">
+        <div className="ku-section-num">02</div>
+        <div className="ku-section-label">FEATURES</div>
         <h2 className="serif">機能。</h2>
-        <div className="feature-grid">
-          <div className="feature">
-            <div className="feature-num">F-01</div>
-            <h3>出典付き回答</h3>
-            <p>規程の◯条◯項に基づいて回答。あやふやな推測はしない。「書いてないから店長に聞いて」と正直に返す。</p>
+        <div className="ku-feature-grid">
+          <div className="ku-feature">
+            <div className="ku-feature-icon">💬</div>
+            <h3>24時間自動応答</h3>
+            <p>営業時間外でもクリチちゃんが即対応。お客様を待たせない。</p>
           </div>
-          <div className="feature">
-            <div className="feature-num">F-02</div>
-            <h3>アバター人格</h3>
-            <p>無機質なチャットUIではなく、"ヴィーチェさん"という名前と顔がある先輩。聞くハードルが消える。</p>
+          <div className="ku-feature">
+            <div className="ku-feature-icon">🎯</div>
+            <h3>出典付き正確回答</h3>
+            <p>製品情報・店舗情報・価格・FAQに基づいて答える。あいまいな返答ナシ。</p>
           </div>
-          <div className="feature">
-            <div className="feature-num">F-03</div>
-            <h3>LINE公式アカウント連携</h3>
-            <p>LINEで「ラビーチェ」を友だち追加するだけ。インストール不要。バイト全員がすでに使っているLINEで完結。</p>
+          <div className="ku-feature">
+            <div className="ku-feature-icon">📨</div>
+            <h3>営業自動引き継ぎ</h3>
+            <p>卸し・コラボ・取材依頼など重要案件は営業担当に即通知。</p>
           </div>
-          <div className="feature">
-            <div className="feature-num">F-04</div>
-            <h3>合言葉認証</h3>
-            <p>友だち追加だけでは質問できない。店長から教えてもらった合言葉を入力した人だけが利用可能。</p>
+          <div className="ku-feature">
+            <div className="ku-feature-icon">🌐</div>
+            <h3>マルチデバイス</h3>
+            <p>Web・LINE・SNSプロフィールから。お客様はどこからでも質問可能。</p>
           </div>
-          <div className="feature">
-            <div className="feature-num">F-05</div>
-            <h3>店長エスカレ</h3>
-            <p>規程にない質問は自動で「店長へ」誘導。判断が必要な領域は人間にバトンタッチ。</p>
+          <div className="ku-feature">
+            <div className="ku-feature-icon">📊</div>
+            <h3>問い合わせ分析</h3>
+            <p>「何を聞かれたか」を可視化。商品改善・販促に活用できる。</p>
           </div>
-          <div className="feature">
-            <div className="feature-num">F-06</div>
-            <h3>管理ダッシュボード</h3>
-            <p>質問ログ・APIコスト・利用統計をリアルタイム可視化。総務が改善ループを回せる。</p>
-          </div>
-          <div className="feature">
-            <div className="feature-num">F-07</div>
-            <h3>規程暗号化</h3>
-            <p>規程データはAES-256-GCM暗号化で東京リージョン保管。漏洩しても復号不可。</p>
-          </div>
-          <div className="feature">
-            <div className="feature-num">F-08</div>
-            <h3>低コスト運用</h3>
-            <p>RAG技術で1質問あたり約¥3.7。月1,000質問でも¥3,700。圧倒的に安い。</p>
+          <div className="ku-feature">
+            <div className="ku-feature-icon">🔐</div>
+            <h3>セキュアな国内保管</h3>
+            <p>会話データはSupabase東京リージョン。AES-256暗号化で安心。</p>
           </div>
         </div>
       </section>
 
-      {/* 03. HOW IT WORKS */}
-      <section className="lp-section" id="flow">
-        <div className="section-num">03</div>
-        <div className="section-label">HOW IT WORKS</div>
-        <h2 className="serif">使い方は、3ステップ。</h2>
-        <div className="flow-grid">
-          <div className="flow-card">
-            <div className="flow-step">STEP 01</div>
-            <div className="flow-icon">📱</div>
-            <h3>LINEで友だち追加</h3>
-            <p>店長から共有されたQRコードで「ラビーチェ」を友だち追加。インストール不要。</p>
+      {/* USE CASES */}
+      <section className="ku-section" id="use-cases">
+        <div className="ku-section-num">03</div>
+        <div className="ku-section-label">USE CASES</div>
+        <h2 className="serif">こんな質問に。</h2>
+        <div className="ku-case-grid">
+          <div className="ku-case">
+            <div className="ku-case-q">「店舗どこですか？」</div>
+            <div className="ku-case-a">→ 大阪・東京・横浜オフィスの所在地を即回答。Googleマップリンクも提示。</div>
           </div>
-          <div className="flow-card">
-            <div className="flow-step">STEP 02</div>
-            <div className="flow-icon">🔑</div>
-            <h3>合言葉を送信</h3>
-            <p>店長から教えてもらった合言葉を入力して認証完了。一度認証すればずっと使える。</p>
+          <div className="ku-case">
+            <div className="ku-case-q">「卸し相談したいです」</div>
+            <div className="ku-case-a">→ 担当窓口を案内、お問い合わせフォームへ誘導 + 営業に即通知。</div>
           </div>
-          <div className="flow-card">
-            <div className="flow-step">STEP 03</div>
-            <div className="flow-icon">💬</div>
-            <h3>質問する</h3>
-            <p>自由に質問を送るだけ。規程・FAQから出典付きで回答が返ってくる。</p>
+          <div className="ku-case">
+            <div className="ku-case-q">「次のイベント出店は？」</div>
+            <div className="ku-case-a">→ 出店スケジュールを確認、最新情報を回答。</div>
           </div>
-        </div>
-
-        <div className="preview-wrap">
-          <div className="preview-label">— 実際の応答例 —</div>
-          <ChatBubblePreview />
-        </div>
-      </section>
-
-      {/* 04. MEET */}
-      <section className="lp-section meet" id="meet">
-        <div className="section-num">04</div>
-        <div className="section-label">MEET HER</div>
-        <div className="meet-grid">
-          <div className="meet-vis">
-            <div className="meet-orb" />
-            <ViBotAvatar size={280} />
+          <div className="ku-case">
+            <div className="ku-case-q">「メニューと価格は？」</div>
+            <div className="ku-case-a">→ 全メニュー・価格・カロリーを正確に提示。</div>
           </div>
-          <div className="meet-text">
-            <div className="meet-name serif">ヴィーチェさん</div>
-            <div className="meet-role">La Viche / 3年目スタッフ</div>
-            <dl className="meet-profile">
-              <div><dt>性格</dt><dd>親しみやすい先輩。敬語ベースだが堅すぎない口調。</dd></div>
-              <div><dt>得意</dt><dd>就業規則・給与・シフト・服装・接客・レジ運営・Membr操作・SOELU設備など。</dd></div>
-              <div><dt>苦手</dt><dd>規程にないこと。あやふやに答えず、すぐ店長に振る。</dd></div>
-              <div><dt>口ぐせ</dt><dd>"ごめん、規程にはっきり書いてないから、店長に確認してみてね。"</dd></div>
-              <div><dt>由来</dt><dd>"La Viche" の名前から。お客様にも、仲間にも、誠実に寄り添う存在。</dd></div>
-            </dl>
+          <div className="ku-case">
+            <div className="ku-case-q">「コラボ提案したいです」</div>
+            <div className="ku-case-a">→ ヒアリング後、貴社情報を取得→クリチ営業へ自動通知。</div>
+          </div>
+          <div className="ku-case">
+            <div className="ku-case-q">「取材したいです」</div>
+            <div className="ku-case-a">→ メディア対応窓口・必要情報を案内、PR担当へエスカレ。</div>
           </div>
         </div>
       </section>
 
-      {/* 05. EFFECT */}
-      <section className="lp-section effect" id="effect">
-        <div className="section-num">05</div>
-        <div className="section-label">EFFECT</div>
-        <h2 className="serif">期待できる効果。</h2>
-        <div className="effect-grid">
-          <div className="effect-card">
-            <div className="effect-icon">📉</div>
-            <div className="effect-num">問い合わせ削減</div>
-            <p>本部総務・店長にバイトから直接かかる問い合わせ件数を大幅に削減。</p>
+      {/* PRICING */}
+      <section className="ku-section" id="pricing">
+        <div className="ku-section-num">04</div>
+        <div className="ku-section-label">PRICING</div>
+        <h2 className="serif">料金プラン。</h2>
+        <p className="ku-pricing-lead">
+          他社様への提供も可能です。<br />
+          飲食店・ブランド企業のお問い合わせ業務をAIで完全自動化。
+        </p>
+        <div className="ku-pricing-grid">
+          <div className="ku-pricing">
+            <div className="ku-pricing-tier">スターター</div>
+            <div className="ku-pricing-target">単店舗・1ブランド</div>
+            <div className="ku-pricing-price">
+              ¥20<em>万</em><span>初期</span>
+              <br />
+              + ¥2<em>万</em><span>/月</span>
+            </div>
+            <ul className="ku-pricing-features">
+              <li>Web/LINE Bot 1チャネル</li>
+              <li>製品・FAQ 5件まで投入</li>
+              <li>月1,000問合せまで</li>
+              <li>Slack/メール通知連携</li>
+              <li>3ヶ月運用サポート</li>
+            </ul>
           </div>
-          <div className="effect-card">
-            <div className="effect-icon">🛡️</div>
-            <div className="effect-num">教育の均一化</div>
-            <p>店舗ごとに違っていた "あいまいな運用" を、規程・FAQベースに揃える。</p>
+          <div className="ku-pricing featured">
+            <div className="ku-pricing-badge">人気</div>
+            <div className="ku-pricing-tier">プロ</div>
+            <div className="ku-pricing-target">複数店舗・複数ブランド</div>
+            <div className="ku-pricing-price">
+              ¥50<em>万</em><span>初期</span>
+              <br />
+              + ¥5<em>万</em><span>/月</span>
+            </div>
+            <ul className="ku-pricing-features">
+              <li>Web/LINE Bot 複数チャネル</li>
+              <li>製品・FAQ 無制限投入</li>
+              <li>月5,000問合せまで</li>
+              <li>CRM連携 (HubSpot/Salesforce等)</li>
+              <li>多言語対応 (英語・中国語等)</li>
+              <li>24/7 サポート</li>
+            </ul>
           </div>
-          <div className="effect-card">
-            <div className="effect-icon">💛</div>
-            <div className="effect-num">定着率の改善</div>
-            <p>"聞きづらい" を解消し、新人バイトの最初の不安を取り除く。</p>
-          </div>
-          <div className="effect-card">
-            <div className="effect-icon">📚</div>
-            <div className="effect-num">規程の浸透</div>
-            <p>誰もが規程・FAQを読まずに守れる状態。ルール改訂時もすぐ全員に届く。</p>
-          </div>
-          <div className="effect-card">
-            <div className="effect-icon">💰</div>
-            <div className="effect-num">圧倒的低コスト</div>
-            <p>月¥3,000〜10,000で22店舗全員の「24時間先輩AI」が手に入る。</p>
-          </div>
-          <div className="effect-card">
-            <div className="effect-icon">🌏</div>
-            <div className="effect-num">マレーシア展開対応</div>
-            <p>多言語化（英語・マレー語）に対応可能。海外進出時もそのまま使える。</p>
+          <div className="ku-pricing">
+            <div className="ku-pricing-tier">エンタープライズ</div>
+            <div className="ku-pricing-target">大規模・特殊要件</div>
+            <div className="ku-pricing-price">
+              <span>別途見積</span>
+            </div>
+            <ul className="ku-pricing-features">
+              <li>カスタムAIモデル選定</li>
+              <li>SSO連携</li>
+              <li>大量データ・高速応答</li>
+              <li>専属開発チーム</li>
+              <li>SLA保証</li>
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* 06. SPEC */}
-      <section className="lp-section" id="spec">
-        <div className="section-num">06</div>
-        <div className="section-label">SPEC</div>
-        <h2 className="serif">仕様。</h2>
-        <div className="spec-grid">
-          <div className="spec-row"><div className="spec-key">ベースAI</div><div className="spec-val">Claude Sonnet 4.5 + Haiku 4.5（Anthropic）</div></div>
-          <div className="spec-row"><div className="spec-key">回答方式</div><div className="spec-val">RAG（関連章のみ抽出）／ 規程・FAQ 計8本</div></div>
-          <div className="spec-row"><div className="spec-key">対応UI</div><div className="spec-val">LINE公式アカウント ／ Webブラウザ</div></div>
-          <div className="spec-row"><div className="spec-key">認証</div><div className="spec-val">合言葉認証 ＋ LINE Login（メアド入力なし）</div></div>
-          <div className="spec-row"><div className="spec-key">管理機能</div><div className="spec-val">質問ログ ／ APIコスト分析 ／ 円グラフ・棒グラフ ／ ホワイトリスト管理</div></div>
-          <div className="spec-row"><div className="spec-key">対応言語</div><div className="spec-val">日本語（マレーシア展開時に英語・マレー語対応可）</div></div>
-          <div className="spec-row"><div className="spec-key">データ管理</div><div className="spec-val">Supabase 東京リージョン ／ AES-256-GCM暗号化</div></div>
-          <div className="spec-row"><div className="spec-key">セキュリティ</div><div className="spec-val">3層防御（合言葉認証 + パスワード + 暗号化）／ HMAC署名 ／ レート制限</div></div>
-          <div className="spec-row"><div className="spec-key">運用コスト</div><div className="spec-val">インフラ¥0（Vercel + Supabase Free）／ AI料金のみ質問数比例</div></div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="lp-cta">
-        <div className="lp-cta-inner">
-          <ViBotAvatar size={140} />
-          <h2 className="serif">触ってみよう。</h2>
-          <p>説明より、話しかけたほうが早いかもしれません。</p>
-          <div className="lp-cta-btns">
-            <Link href="/" className="btn-primary big">
-              Webで話す <span>→</span>
-            </Link>
-            <a href="https://line.me/R/ti/p/@923fsjxp" target="_blank" rel="noreferrer" className="btn-line big">
-              LINEで友だち追加 <span>+</span>
-            </a>
-          </div>
-        </div>
+      {/* CONTACT */}
+      <section className="ku-section ku-contact" id="contact">
+        <div className="ku-section-num">05</div>
+        <div className="ku-section-label">CONTACT</div>
+        <h2 className="serif">無料デモのお申込み。</h2>
+        <p className="ku-contact-lead">
+          実際にクリチちゃんとお話しいただけます。<br />
+          貴社サービス導入のご相談も承ります。
+        </p>
+        <LeadForm />
       </section>
 
       {/* FOOTER */}
-      <footer className="lp-footer">
-        <div className="lp-footer-grid">
+      <footer className="ku-footer">
+        <div className="ku-footer-grid">
           <div>
-            <div className="serif lp-footer-logo">La Viche Concierge</div>
-            <p className="lp-footer-desc">バイト・社員のための社内ルールAI先輩。<br />Vsw株式会社 開発。</p>
+            <div className="serif ku-footer-logo">#クリチ Inquiry AI</div>
+            <p className="ku-footer-desc">
+              NY発・大阪生まれの<br />
+              クリームチーズバーガー<br />
+              by Vsw株式会社
+            </p>
           </div>
           <div>
-            <div className="lp-footer-h">サイトマップ</div>
-            <a href="#about">About</a>
-            <a href="#features">Features</a>
-            <a href="#flow">How it Works</a>
-            <a href="#meet">Meet Her</a>
-            <a href="#spec">Spec</a>
+            <div className="ku-footer-h">サービス</div>
+            <a href="#about">サービス概要</a>
+            <a href="#features">機能</a>
+            <a href="#pricing">料金</a>
           </div>
           <div>
-            <div className="lp-footer-h">体験</div>
-            <Link href="/">Webアプリ</Link>
-            <a href="https://line.me/R/ti/p/@923fsjxp" target="_blank" rel="noreferrer">LINEで追加</a>
-            <Link href="/knowledge">規程ビューア</Link>
-          </div>
-          <div>
-            <div className="lp-footer-h">管理者向け</div>
-            <Link href="/admin">📊 管理画面（GM Console）</Link>
-            <Link href="/status">プロジェクト現況</Link>
-          </div>
-          <div>
-            <div className="lp-footer-h">規約類</div>
+            <div className="ku-footer-h">リンク</div>
+            <a href="https://vsw.co.jp" target="_blank" rel="noreferrer">Vsw株式会社 ↗</a>
+            <Link href="/privacy">プライバシー</Link>
             <Link href="/terms">利用規約</Link>
-            <Link href="/privacy">プライバシーポリシー</Link>
+          </div>
+          <div>
+            <div className="ku-footer-h">お問い合わせ</div>
+            <a href="#contact">デモ依頼</a>
+            <a href="https://vsw.co.jp" target="_blank" rel="noreferrer">Vsw公式 ↗</a>
           </div>
         </div>
-        <div className="lp-footer-bottom">
-          <span>© 2026 La Viche / AMZ GROUP</span>
-          <span>Designed & Built by Vsw Inc.</span>
+        <div className="ku-footer-bottom">
+          <span>© 2026 Vsw株式会社</span>
+          <span>#クリチ Inquiry AI</span>
         </div>
       </footer>
     </div>
