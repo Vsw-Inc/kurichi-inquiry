@@ -10,6 +10,7 @@ import crypto from "node:crypto";
 import Anthropic from "@anthropic-ai/sdk";
 import { loadKnowledge } from "../../../lib/loadKnowledge";
 import { splitIntoChunks, buildTOC, pickChunks } from "../../../lib/regChunks";
+import { logChat } from "../../../lib/chatLog";
 
 export const runtime = "nodejs";
 export const maxDuration = 25;
@@ -284,6 +285,7 @@ export async function POST(req: Request) {
           }
 
           const client = new Anthropic({ apiKey });
+          const startedAt = Date.now();
           try {
             const { answer, citation } = await askClaude(client, userText);
 
@@ -297,6 +299,16 @@ export async function POST(req: Request) {
             }
 
             await lineReply(ev.replyToken, finalAnswer);
+
+            // チャットログ記録（fire-and-forget）
+            void logChat({
+              user_id: userId,
+              user_source: escalate ? "kurichi-line/escalate" : "kurichi-line",
+              question: userText,
+              answer_preview: finalAnswer.substring(0, 300),
+              citation,
+              duration_ms: Date.now() - startedAt,
+            });
 
             if (escalate) {
               void notifyEscalateSlack(userId, userText, answer);

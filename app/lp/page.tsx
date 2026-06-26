@@ -283,6 +283,7 @@ export default function LP() {
             <a href="https://line.me/R/ti/p/@552gvrkj" target="_blank" rel="noreferrer">💬 LINEで聞く</a>
             <a href="#contact">フォーム</a>
             <a href="https://vsw.co.jp" target="_blank" rel="noreferrer">Vsw公式 ↗</a>
+            <Link href="/admin" style={{ fontSize: 11, opacity: 0.5 }}>🔒 管理</Link>
           </div>
         </div>
         <div className="ku-footer-bottom">

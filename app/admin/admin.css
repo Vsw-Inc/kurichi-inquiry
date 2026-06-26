@@ -1,0 +1,288 @@
+/* ============== KURICHI ADMIN ============== */
+.kadmin {
+  --bg: #fff8f0;
+  --ink: #2a1810;
+  --ink-2: #5a3f2a;
+  --orange: #f5862e;
+  --orange-deep: #d96e1e;
+  --line: rgba(217, 110, 30, 0.18);
+  --muted: rgba(42, 24, 16, 0.5);
+
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.kadmin .serif {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+}
+.kadmin a { color: var(--orange-deep); text-decoration: none; transition: color 0.2s; }
+.kadmin a:hover { color: var(--orange); }
+.kadmin .muted { color: var(--muted); }
+
+/* HEADER */
+.kadmin-head {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px 32px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.kadmin-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--orange-deep);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.kadmin-head h1 {
+  font-size: 28px;
+  margin: 0;
+  color: var(--ink);
+}
+.kadmin-head-r { display: flex; gap: 18px; align-items: center; }
+.kadmin-link {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.kadmin-link:hover {
+  border-color: var(--orange);
+  background: rgba(245, 134, 46, 0.05);
+}
+
+/* KPIs */
+.kadmin-kpis {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.kadmin-kpi {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px 24px;
+  border-left: 4px solid var(--orange);
+}
+.kadmin-kpi-num {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 38px;
+  color: var(--ink);
+  line-height: 1;
+  font-weight: 700;
+}
+.kadmin-kpi-num.accent { color: var(--orange-deep); }
+.kadmin-kpi-num em {
+  font-style: normal;
+  font-size: 14px;
+  color: var(--muted);
+  margin-left: 4px;
+}
+.kadmin-kpi-label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* SECTION */
+.kadmin-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 36px 32px;
+}
+.kadmin-section h2 {
+  font-size: 16px;
+  margin: 0 0 18px;
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* EMPTY */
+.kadmin-empty {
+  padding: 40px 28px;
+  background: #ffffff;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+.kadmin-empty small { font-size: 11px; }
+
+/* TABLE */
+.kadmin-tbl {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 13px;
+}
+.kadmin-tbl thead { background: rgba(245, 134, 46, 0.06); }
+.kadmin-tbl th {
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--orange-deep);
+  border-bottom: 1px solid var(--line);
+}
+.kadmin-tbl td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.kadmin-tbl tbody tr:last-child td { border-bottom: none; }
+.kadmin-tbl tbody tr:hover { background: rgba(245, 134, 46, 0.03); }
+.kadmin-tbl .q { color: var(--ink); font-weight: 500; }
+.kadmin-tbl .a { color: var(--ink-2); }
+.kadmin-tbl .cite { font-size: 11px; color: var(--orange-deep); }
+.kadmin-tbl tr.row-escalate { background: rgba(245, 134, 46, 0.05); }
+
+/* BADGE */
+.bdg {
+  display: inline-block;
+  padding: 2px 8px;
+  background: rgba(245, 134, 46, 0.12);
+  color: var(--orange-deep);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.bdg.escalate {
+  background: #d96e1e;
+  color: #ffffff;
+}
+
+/* FOOTER */
+.kadmin-foot {
+  max-width: 1400px;
+  margin: 24px auto 0;
+  padding: 20px 32px 30px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+/* GATE（パスワードログイン） */
+.kadmin-gate {
+  min-height: 100vh;
+  background: radial-gradient(900px 600px at 50% -10%, rgba(255, 199, 74, 0.25), transparent 60%), #fff8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  font-family: "Noto Sans JP", sans-serif;
+}
+.kadmin-gate-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border: 1px solid rgba(217, 110, 30, 0.18);
+  border-radius: 20px;
+  padding: 40px 36px;
+  box-shadow: 0 24px 60px rgba(217, 110, 30, 0.12);
+}
+.kadmin-gate-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: #d96e1e;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.kadmin-gate-card h1.serif {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 32px;
+  color: #2a1810;
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+.kadmin-gate-lead {
+  font-size: 14px;
+  color: #5a3f2a;
+  margin: 0 0 24px;
+}
+.kadmin-gate-card form {
+  display: flex;
+  gap: 10px;
+}
+.kadmin-gate-card input {
+  flex: 1;
+  padding: 14px 18px;
+  border: 1.5px solid rgba(217, 110, 30, 0.3);
+  border-radius: 9999px;
+  font-size: 15px;
+  color: #2a1810;
+  background: #fffaf2;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.kadmin-gate-card input:focus {
+  border-color: #f5862e;
+  box-shadow: 0 0 0 3px rgba(245, 134, 46, 0.18);
+}
+.kadmin-gate-card button {
+  background: #f5862e;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 0 28px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(245, 134, 46, 0.3);
+  transition: background 0.2s, transform 0.2s;
+}
+.kadmin-gate-card button:hover:not(:disabled) {
+  background: #d96e1e;
+  transform: translateY(-1px);
+}
+.kadmin-gate-card button:disabled { opacity: 0.5; cursor: not-allowed; }
+.kadmin-gate-err {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: rgba(217, 122, 108, 0.1);
+  color: #b85a4c;
+  border-left: 3px solid #d97a6c;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.kadmin-gate-note {
+  margin-top: 24px;
+  font-size: 11px;
+  color: rgba(42, 24, 16, 0.5);
+  border-top: 1px solid rgba(217, 110, 30, 0.18);
+  padding-top: 16px;
+}
+
+@media (max-width: 720px) {
+  .kadmin-head { padding: 18px 18px 14px; }
+  .kadmin-head h1 { font-size: 22px; }
+  .kadmin-kpis { padding: 18px 18px; gap: 12px; }
+  .kadmin-section { padding: 24px 18px; }
+  .kadmin-tbl { font-size: 11.5px; }
+  .kadmin-tbl th, .kadmin-tbl td { padding: 8px 10px; }
+}
