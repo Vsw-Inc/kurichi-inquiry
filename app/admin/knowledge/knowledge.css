@@ -1,0 +1,151 @@
+/* ============== KURICHI KNOWLEDGE VIEWER ============== */
+
+/* TOC */
+.kn-toc {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.kn-toc-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--orange);
+  border-radius: 0 10px 10px 0;
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.kn-toc-item:hover {
+  background: rgba(245, 134, 46, 0.06);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(217, 110, 30, 0.1);
+}
+.kn-toc-no {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  color: var(--orange-deep);
+  font-weight: 700;
+  min-width: 36px;
+}
+.kn-toc-name {
+  flex: 1;
+  font-weight: 600;
+}
+.kn-toc-count {
+  font-size: 11px;
+  color: var(--muted);
+  background: rgba(245, 134, 46, 0.1);
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* SECTION HEADER */
+.kn-section h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-size: 22px !important;
+  color: var(--ink) !important;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--orange);
+}
+.kn-sec-no {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 28px;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+/* CHAPTERS */
+.kn-chapters {
+  display: grid;
+  gap: 18px;
+}
+.kn-chapter-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.kn-chapter-card:hover {
+  box-shadow: 0 8px 24px rgba(217, 110, 30, 0.08);
+}
+.kn-chapter-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: linear-gradient(90deg, rgba(245, 134, 46, 0.1), rgba(245, 134, 46, 0.02));
+  border-bottom: 1px solid var(--line);
+}
+.kn-chapter-id {
+  font-family: "SF Mono", "Menlo", monospace;
+  font-size: 11px;
+  color: var(--orange-deep);
+  background: rgba(245, 134, 46, 0.15);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+.kn-chapter-title {
+  font-size: 15px;
+  color: var(--ink);
+  font-weight: 700;
+}
+.kn-chapter-body {
+  padding: 20px 24px;
+}
+
+/* BODY ELEMENTS */
+.kn-chapter {
+  font-size: 14px;
+  color: var(--orange-deep);
+  font-weight: 700;
+  margin: 18px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed rgba(217, 110, 30, 0.3);
+}
+.kn-article {
+  font-size: 13px;
+  color: var(--ink);
+  margin: 14px 0 4px;
+  padding-left: 8px;
+  border-left: 3px solid var(--orange);
+}
+.kn-article strong {
+  color: var(--orange-deep);
+  font-weight: 700;
+  margin-right: 4px;
+}
+.kn-text {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.85;
+  margin: 6px 0;
+  padding-left: 8px;
+}
+.kn-answer {
+  font-size: 13.5px;
+  color: var(--ink);
+  line-height: 1.85;
+  margin: 6px 0 14px;
+  padding: 10px 14px;
+  background: rgba(255, 199, 74, 0.15);
+  border-radius: 6px;
+  border-left: 4px solid var(--orange);
+}
+
+@media (max-width: 720px) {
+  .kn-toc-item { padding: 12px 14px; font-size: 13px; }
+  .kn-chapter-head { padding: 12px 14px; gap: 8px; }
+  .kn-chapter-title { font-size: 13.5px; }
+  .kn-chapter-body { padding: 16px 16px; }
+  .kn-section h2 { font-size: 18px !important; }
+}

@@ -61,6 +61,7 @@ export default async function AdminPage() {
           <h1 className="serif">クリチ Inquiry AI 管理</h1>
         </div>
         <div className="kadmin-head-r">
+          <Link href="/admin/knowledge" className="kadmin-link">📖 ナレッジ</Link>
           <Link href="/lp" className="kadmin-link">サイトに戻る</Link>
           <a href="/api/admin/logout" className="kadmin-link">ログアウト</a>
         </div>
