@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prebuild": "node scripts/build-knowledge.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.30.0",
