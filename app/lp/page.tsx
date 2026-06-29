@@ -74,7 +74,7 @@ export default function LP() {
         <section className="ku-hero">
           <div className="ku-hero-grid">
             <div className="ku-hero-text">
-              <div className="ku-eyebrow">KURICHI OFFICIAL AI CONCIERGE</div>
+              <div className="ku-eyebrow">AIクリチちゃんがLINEで答える</div>
               <h1 className="serif">
                 LINEで聞かれること、<br />
                 <em>クリチちゃん</em>が先に答える。
