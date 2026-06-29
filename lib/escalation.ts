@@ -26,6 +26,7 @@ export type EscalationCategory =
   | "在庫確認"
   | "未確定情報"
   | "フランチャイズ相談"
+  | "AI導入相談"
   | null;
 
 export type Priority = "high" | "medium" | "low";
@@ -128,6 +129,30 @@ const RULES: Rule[] = [
     priority: "low",
     patterns: [/在庫/, /在庫.*ある/, /売り切れ/],
     ask: [],
+  },
+  {
+    category: "AI導入相談",
+    priority: "high",
+    patterns: [
+      /導入したい/,
+      /自社.*使い/,
+      /自社.*導入/,
+      /うち.*導入/,
+      /うち.*使え/,
+      /他社.*使え/,
+      /他のブランド.*使/,
+      /同じよう.*Bot/i,
+      /同じよう.*AI/i,
+      /Inquiry AI/i,
+      /問い合わせAI.*導入/,
+      /見積もり/,
+      /見積り/,
+      /料金.*教え/,
+      /いくら/,
+      /プラン.*料金/,
+      /スターター|プロプラン|エンタープライズ/,
+    ],
+    ask: ["company", "name", "email", "phone"],
   },
 ];
 
