@@ -75,10 +75,9 @@ export default function LP() {
         <section className="ku-hero">
           <div className="ku-hero-grid">
             <div className="ku-hero-text">
-              <div className="ku-eyebrow">AIクリチちゃんがLINEで答える</div>
               <h1 className="serif">
-                LINEで聞かれること、<br />
-                <em>クリチちゃん</em>が先に答える。
+                AI<em>クリチちゃん</em>が<br />
+                LINEで答える
               </h1>
               <p className="ku-lead-copy">
                 #クリチの購入前質問から、卸し・コラボ・取材相談まで。
