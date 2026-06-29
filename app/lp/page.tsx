@@ -52,7 +52,9 @@ export default function LP() {
   return (
     <div className="ku">
       <header className="ku-header">
-        <a className="ku-logo" href="#top" aria-label="#クリチ Inquiry AI トップへ">
+        <a className="ku-logo" href="#top" aria-label="Vsw / #クリチ Inquiry AI トップへ">
+          <img src="/vsw-logo.svg" alt="Vsw" className="ku-logo-vsw" />
+          <span className="ku-logo-divider" aria-hidden="true">×</span>
           <span className="serif">#クリチ</span>
           <span className="ku-logo-sub">INQUIRY AI</span>
         </a>

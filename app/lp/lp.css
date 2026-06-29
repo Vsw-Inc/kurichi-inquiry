@@ -52,15 +52,30 @@
 
 .ku-logo {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
   min-width: max-content;
+}
+
+.ku-logo-vsw {
+  height: 26px;
+  width: auto;
+  display: block;
+}
+
+.ku-logo-divider {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.5;
+  margin: 0 -2px;
 }
 
 .ku-logo .serif {
   color: var(--orange-deep);
   font-size: 28px;
   font-weight: 750;
+  line-height: 1;
 }
 
 .ku-logo-sub,
