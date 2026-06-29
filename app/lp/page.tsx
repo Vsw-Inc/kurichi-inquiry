@@ -507,6 +507,11 @@ export default function LP() {
             <a href="#contact">フォーム</a>
           </div>
         </div>
+        <div className="ku-footer-admin">
+          <span className="ku-footer-admin-label">運営者向け</span>
+          <Link href="/admin">🛠 管理コンソール</Link>
+          <Link href="/admin/knowledge">📖 RAGナレッジ</Link>
+        </div>
         <div className="ku-footer-bottom">
           <span>© 2026 Vsw株式会社</span>
           <span>#クリチ Inquiry AI</span>
