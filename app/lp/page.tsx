@@ -69,6 +69,7 @@ export default function LP() {
           相談する
         </a>
       </header>
+      <div className="ku-stripe" aria-hidden="true" />
 
       <main id="top">
         <section className="ku-hero">
@@ -483,6 +484,7 @@ export default function LP() {
         </section>
       </main>
 
+      <div className="ku-stripe" aria-hidden="true" />
       <footer className="ku-footer">
         <div className="ku-footer-grid">
           <div>
