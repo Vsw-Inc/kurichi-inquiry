@@ -7,6 +7,5 @@ node_modules
 next-env.d.ts
 
 # 規程の平文は git に置かない（暗号化版 .enc のみコミット）
-data/knowledge.md
 
 .vercel

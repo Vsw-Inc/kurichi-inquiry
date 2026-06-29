@@ -45,8 +45,13 @@ export default function LeadForm() {
   }
 
   return (
-    <form className="ku-lead" onSubmit={submit} autoComplete="on">
-      <div className="ku-lead-row">
+    <form className="ku-contact-form" onSubmit={submit} autoComplete="on">
+      <div className="ku-form-head">
+        <span>FREE DEMO</span>
+        <h3>無料デモ・導入相談</h3>
+        <p>課題感だけでも大丈夫です。内容を確認して、2営業日以内にご連絡します。</p>
+      </div>
+      <div className="ku-form-row">
         <label>
           <span>お名前 *</span>
           <input
@@ -69,7 +74,7 @@ export default function LeadForm() {
           />
         </label>
       </div>
-      <div className="ku-lead-row">
+      <div className="ku-form-row">
         <label>
           <span>メールアドレス *</span>
           <input
@@ -112,21 +117,21 @@ export default function LeadForm() {
           required
         />
       </label>
-      <div className="ku-lead-foot">
+      <div className="ku-form-foot">
         <small>
           ※ いただいた情報は<a href="/privacy">プライバシーポリシー</a>に基づき適切に管理いたします。
         </small>
-        <button type="submit" disabled={state === "sending"} className="ku-lead-btn">
-          {state === "sending" ? "送信中..." : "送信する"}
+        <button type="submit" disabled={state === "sending"} className="ku-form-btn">
+          {state === "sending" ? "送信中..." : "無料デモを相談する"}
         </button>
       </div>
       {state === "ok" && (
-        <div className="ku-lead-msg ok">
-          ✅ 送信完了しました。担当より2営業日以内にご連絡いたします🍔
+        <div className="ku-form-msg ok">
+          送信完了しました。担当より2営業日以内にご連絡いたします。
         </div>
       )}
       {state === "ng" && error && (
-        <div className="ku-lead-msg ng">❌ {error}</div>
+        <div className="ku-form-msg ng">{error}</div>
       )}
     </form>
   );
