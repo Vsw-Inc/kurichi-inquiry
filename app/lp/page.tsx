@@ -58,7 +58,7 @@ export default function LP() {
         </a>
         <nav className="ku-nav" aria-label="ページ内ナビゲーション">
           <a href="#demo">DEMO</a>
-          <a href="#about">ABOUT</a>
+          <a href="#design">DESIGN</a>
           <a href="#features">FEATURES</a>
           <a href="#flow">FLOW</a>
           <a href="#pricing">PRICING</a>
@@ -244,6 +244,61 @@ export default function LP() {
           </div>
         </section>
 
+        <section className="ku-section ku-design" id="design">
+          <div className="ku-section-kicker">DESIGN</div>
+          <div className="ku-section-head">
+            <h2 className="serif">FAQ Botではなく、<br />問い合わせAIとして設計。</h2>
+            <p>
+              #クリチ Inquiry AI は、商品情報・FAQ・ブランド情報を整理した <strong>RAGナレッジ</strong> をもとに回答します。
+              さらに <strong>会話記憶</strong> で前回の相談を踏まえ、卸し・取材・コラボなど商談化しそうな問い合わせは <strong>担当者に自動引き継ぎ</strong>します。
+            </p>
+          </div>
+
+          <div className="ku-design-grid">
+            <article className="ku-design-card">
+              <div className="ku-design-num">01</div>
+              <h3>RAGナレッジ回答</h3>
+              <p>
+                商品・食べ方・保存方法・販売情報・ブランド情報を構造化。
+                公式情報に沿った、ブランドらしい言い回しで自動回答。
+              </p>
+              <ul>
+                <li>商品ごとの説明・フレーバー差を区別</li>
+                <li>未確定情報は断定せず、確認に回す</li>
+                <li>出典つきで根拠を残す</li>
+              </ul>
+            </article>
+
+            <article className="ku-design-card featured">
+              <div className="ku-design-num">02</div>
+              <h3>会話記憶</h3>
+              <p>
+                LINE ユーザーごとに「興味・希望数量・前回の話題」など要点だけを保存。
+                再訪時に「前回のご相談、続きですか？」と自然に踏まえて返せる。
+              </p>
+              <ul>
+                <li>個人情報を不自然に並べない</li>
+                <li>要約のみ保存（全文ログとは別管理）</li>
+                <li>担当者引き継ぎ中フラグも保持</li>
+              </ul>
+            </article>
+
+            <article className="ku-design-card">
+              <div className="ku-design-num">03</div>
+              <h3>有人引き継ぎ</h3>
+              <p>
+                卸し・取材・コラボ・クレーム・アレルギー詳細など、AIで完結させない方がよい相談を自動検知。
+                不足情報を聞き取り、担当者通知をSlackやメールで届けます。
+              </p>
+              <ul>
+                <li>カテゴリ・優先度を分類</li>
+                <li>会社名・希望数量など不足項目を自然に質問</li>
+                <li>担当者通知用の要約を生成</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
         <section className="ku-section" id="features">
           <div className="ku-section-kicker">FEATURES</div>
           <div className="ku-section-head">
@@ -325,10 +380,13 @@ export default function LP() {
                 + ¥2<em>万</em><span>/月</span>
               </div>
               <ul className="ku-pricing-features">
-                <li>WebまたはLINE Bot 1チャネル</li>
-                <li>FAQ / 商品情報の初期投入</li>
-                <li>月1,000問い合わせ目安</li>
-                <li>メール通知連携</li>
+                <li>✅ RAGナレッジ回答</li>
+                <li>✅ 基本FAQ自動応答</li>
+                <li>✅ LINEまたはWeb 1チャネル</li>
+                <li>✅ 月1,000問い合わせ目安</li>
+                <li>✅ 月1回の軽微なRAG更新</li>
+                <li className="muted">— 会話記憶（なし）</li>
+                <li className="muted">— 有人引き継ぎ判定（なし）</li>
               </ul>
             </article>
 
@@ -336,18 +394,20 @@ export default function LP() {
               <div className="ku-pricing-badge">おすすめ</div>
               <div className="ku-pricing-tier">PRO</div>
               <h3>プロ</h3>
-              <p>複数店舗・ブランド運用向け</p>
+              <p>複数店舗・商談獲得を狙うブランド向け</p>
               <div className="ku-pricing-price">
                 ¥50<em>万</em><span>初期</span>
                 <br />
                 + ¥5<em>万</em><span>/月</span>
               </div>
               <ul className="ku-pricing-features">
-                <li>Web / LINE 複数チャネル対応</li>
-                <li>FAQ / 商品情報の継続更新</li>
-                <li>月5,000問い合わせ目安</li>
-                <li>CRM / Slack等の通知連携相談</li>
-                <li>月次改善レポート</li>
+                <li>✅ RAGナレッジ回答</li>
+                <li>✅ <strong>会話記憶</strong>（前回相談を踏まえ継続対応）</li>
+                <li>✅ <strong>有人引き継ぎ判定</strong>（卸し・取材・コラボ検知）</li>
+                <li>✅ 法人問い合わせ整理＋担当者通知</li>
+                <li>✅ Web/LINE 複数チャネル対応</li>
+                <li>✅ 月5,000問い合わせ目安</li>
+                <li>✅ 月次RAG改善＋問い合わせ傾向レポート</li>
               </ul>
             </article>
 
@@ -359,10 +419,13 @@ export default function LP() {
                 <span>個別見積</span>
               </div>
               <ul className="ku-pricing-features">
-                <li>独自データ・既存システム連携</li>
-                <li>多言語・海外展開相談</li>
-                <li>SSO / 権限管理</li>
-                <li>SLA・専用運用体制</li>
+                <li>✅ プロ全機能</li>
+                <li>✅ 複数ブランド・複数店舗対応</li>
+                <li>✅ 高度な会話記憶（長期文脈）</li>
+                <li>✅ CRM / Chatwork / Slack 連携</li>
+                <li>✅ 専用RAG設計＋運用改善ミーティング</li>
+                <li>✅ 多言語・海外展開相談</li>
+                <li>✅ SLA・専用運用体制</li>
               </ul>
             </article>
           </div>

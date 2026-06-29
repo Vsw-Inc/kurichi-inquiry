@@ -11,6 +11,17 @@ import Anthropic from "@anthropic-ai/sdk";
 import { loadKnowledge } from "../../../lib/loadKnowledge";
 import { splitIntoChunks, buildTOC, pickChunks } from "../../../lib/regChunks";
 import { logChat } from "../../../lib/chatLog";
+import {
+  getMemory,
+  upsertMemory,
+  memoryToSystemHint,
+  extractMemoryUpdate,
+  type ConversationMemory,
+} from "../../../lib/conversationMemory";
+import {
+  detectEscalation,
+  buildHandoffNotification,
+} from "../../../lib/escalation";
 
 export const runtime = "nodejs";
 export const maxDuration = 25;
@@ -87,33 +98,7 @@ const GREETING = `友だち追加ありがとうございます！
 ・注文したい
 ・イベント出店について相談したい`;
 
-// 営業エスカレが必要なキーワード（クリチ正式ルール）
-const ESCALATE_KEYWORDS = [
-  // 取引・卸
-  "卸", "おろし", "取引", "仕入れ", "業務用",
-  // メディア・取材
-  "取材", "メディア", "TV", "雑誌", "PR",
-  // コラボ・提案
-  "コラボ", "コラボレーション", "提案", "コラボ依頼",
-  // イベント
-  "出店依頼", "イベント主催", "キッチンカー出店", "出店してもらえ",
-  // 法人・大量
-  "法人", "大量", "10個", "20個", "100個",
-  // 注文・配送
-  "注文したい", "配送", "通販", "予約",
-  // ギフト
-  "ギフト", "プレゼント",
-  // クレーム
-  "クレーム", "苦情", "返金", "返品",
-  // フランチャイズ
-  "フランチャイズ", "代理店",
-  // 海外
-  "海外販売", "輸出",
-];
-
-function shouldEscalate(text: string): boolean {
-  return ESCALATE_KEYWORDS.some((kw) => text.includes(kw));
-}
+// エスカレーション判定は lib/escalation.ts に移譲（カテゴリ・優先度・不足情報を返す）
 
 function fallbackContext(chunks: ReturnType<typeof splitIntoChunks>): string {
   if (chunks.length === 0) return "";
@@ -158,18 +143,26 @@ async function selectRelevantContext(
 
 async function askClaude(
   client: Anthropic,
-  question: string
+  question: string,
+  memory: ConversationMemory | null = null
 ): Promise<{ answer: string; citation: string | null }> {
   const knowledge = await loadKnowledge();
   const { context } = await selectRelevantContext(client, knowledge, question);
 
+  const memoryHint = memoryToSystemHint(memory);
+
+  const systemBlocks: any[] = [
+    { type: "text", text: SYSTEM_PROMPT },
+    { type: "text", text: `# ナレッジ\n${context}` },
+  ];
+  if (memoryHint) {
+    systemBlocks.push({ type: "text", text: memoryHint });
+  }
+
   const res = await client.messages.create({
     model: ANSWER_MODEL,
     max_tokens: 600,
-    system: [
-      { type: "text", text: SYSTEM_PROMPT },
-      { type: "text", text: `# ナレッジ\n${context}` },
-    ] as any,
+    system: systemBlocks as any,
     messages: [{ role: "user", content: question }],
   });
 
@@ -216,41 +209,53 @@ async function lineReply(replyToken: string, text: string): Promise<void> {
 async function notifyEscalateSlack(
   userId: string,
   question: string,
-  answer: string
+  answer: string,
+  category: string,
+  priority: string,
+  fullText: string
 ) {
   const url = process.env.LEAD_SLACK_WEBHOOK;
   if (!url) return;
   try {
+    const emoji = priority === "high" ? "🚨" : priority === "medium" ? "⚠️" : "ℹ️";
     await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        text: `🚨 クリチBot: 重要案件の問い合わせ`,
+        text: `${emoji} クリチBot: ${category}（${priority}）`,
         blocks: [
           {
             type: "header",
-            text: { type: "plain_text", text: "🚨 重要案件の問い合わせ" },
+            text: { type: "plain_text", text: `${emoji} ${category}` },
           },
           {
             type: "section",
             fields: [
+              { type: "mrkdwn", text: `*優先度*\n${priority.toUpperCase()}` },
               { type: "mrkdwn", text: `*LINE userId*\n\`${userId}\`` },
             ],
           },
           {
             type: "section",
-            text: { type: "mrkdwn", text: `*質問*\n${question}` },
+            text: { type: "mrkdwn", text: `*ご相談内容*\n${question.slice(0, 500)}` },
           },
           {
             type: "section",
-            text: { type: "mrkdwn", text: `*クリチちゃんの回答*\n${answer}` },
+            text: { type: "mrkdwn", text: `*クリチちゃんの返答*\n${answer.slice(0, 500)}` },
+          },
+          {
+            type: "section",
+            text: {
+              type: "mrkdwn",
+              text: "```" + fullText.slice(0, 2500) + "```",
+            },
           },
           {
             type: "context",
             elements: [
               {
                 type: "mrkdwn",
-                text: "→ Vsw担当より2営業日以内に個別フォローアップ推奨",
+                text: "→ Vsw担当より対応してください",
               },
             ],
           },
@@ -327,31 +332,74 @@ export async function POST(req: Request) {
           const client = new Anthropic({ apiKey });
           const startedAt = Date.now();
           try {
-            const { answer, citation } = await askClaude(client, userText);
+            // (1) 会話記憶を取得
+            const memory = await getMemory(userId);
 
-            // 重要案件は本文末尾にエスカレ案内を追加
+            // (2) 構造化エスカレーション判定（記憶も考慮）
+            const escalation = detectEscalation(userText, memory);
+
+            // (3) RAG + 会話記憶を踏まえて Claude が回答
+            const { answer, citation } = await askClaude(client, userText, memory);
+
+            // (4) 重要案件のフォローアップを本文末尾に追記
             let finalAnswer = answer;
-            const escalate = shouldEscalate(userText);
-            if (escalate) {
-              finalAnswer +=
-                "\n\n💼 重要なご相談として、Vsw担当者にもお伝えしておくね。" +
-                "個別連絡まで少しお待ちいただけると嬉しいです🍔";
+            if (escalation.should_handoff) {
+              const nq = escalation.next_question;
+              if (nq && !answer.includes("担当者")) {
+                finalAnswer += `\n\n${nq}`;
+              }
             }
 
+            // (5) ユーザーへ返信
             await lineReply(ev.replyToken, finalAnswer);
 
-            // チャットログ記録（fire-and-forget）
+            // (6) チャットログ記録（生ログ・fire-and-forget）
+            const logSource = escalation.should_handoff
+              ? `kurichi-line/escalate/${escalation.category || "other"}`
+              : "kurichi-line";
             void logChat({
               user_id: userId,
-              user_source: escalate ? "kurichi-line/escalate" : "kurichi-line",
+              user_source: logSource,
               question: userText,
               answer_preview: finalAnswer.substring(0, 300),
               citation,
               duration_ms: Date.now() - startedAt,
             });
 
-            if (escalate) {
-              void notifyEscalateSlack(userId, userText, answer);
+            // (7) 会話記憶を更新（Claudeで要約抽出）
+            void (async () => {
+              const update = await extractMemoryUpdate(
+                client,
+                userText,
+                finalAnswer,
+                memory
+              );
+              const finalUpdate = {
+                ...(update || {}),
+                handoff_required: escalation.should_handoff,
+                handoff_category: escalation.category,
+                handoff_priority: escalation.priority,
+              };
+              await upsertMemory(userId, finalUpdate);
+            })();
+
+            // (8) 担当者通知（Slack）
+            if (escalation.should_handoff) {
+              const notif = buildHandoffNotification({
+                userId,
+                userText,
+                botReply: finalAnswer,
+                result: escalation,
+                memory,
+              });
+              void notifyEscalateSlack(
+                userId,
+                userText,
+                finalAnswer,
+                escalation.category || "重要案件",
+                escalation.priority,
+                notif.text
+              );
             }
           } catch (e: any) {
             console.error("[kurichi-bot] claude error:", e?.message ?? e);
