@@ -2,7 +2,7 @@
  * 自動生成ファイル — 編集禁止
  * 生成元：data/knowledge.md
  * スクリプト：scripts/build-knowledge.mjs
- * 生成日時：2026-06-29T04:24:03.243Z
+ * 生成日時：2026-06-29T05:49:57.062Z
  */
 export const KNOWLEDGE_TEXT = `# KURICHI / #クリチ 問い合わせAI Bot用 RAGデータ
 

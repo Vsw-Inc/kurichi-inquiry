@@ -22,6 +22,7 @@ import {
   detectEscalation,
   buildHandoffNotification,
 } from "../../../lib/escalation";
+import { sendNotifyMail, buildEscalateMail } from "../../../lib/notifyMail";
 
 export const runtime = "nodejs";
 export const maxDuration = 25;
@@ -206,66 +207,7 @@ async function lineReply(replyToken: string, text: string): Promise<void> {
   }
 }
 
-async function notifyEscalateSlack(
-  userId: string,
-  question: string,
-  answer: string,
-  category: string,
-  priority: string,
-  fullText: string
-) {
-  const url = process.env.LEAD_SLACK_WEBHOOK;
-  if (!url) return;
-  try {
-    const emoji = priority === "high" ? "🚨" : priority === "medium" ? "⚠️" : "ℹ️";
-    await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        text: `${emoji} クリチBot: ${category}（${priority}）`,
-        blocks: [
-          {
-            type: "header",
-            text: { type: "plain_text", text: `${emoji} ${category}` },
-          },
-          {
-            type: "section",
-            fields: [
-              { type: "mrkdwn", text: `*優先度*\n${priority.toUpperCase()}` },
-              { type: "mrkdwn", text: `*LINE userId*\n\`${userId}\`` },
-            ],
-          },
-          {
-            type: "section",
-            text: { type: "mrkdwn", text: `*ご相談内容*\n${question.slice(0, 500)}` },
-          },
-          {
-            type: "section",
-            text: { type: "mrkdwn", text: `*クリチちゃんの返答*\n${answer.slice(0, 500)}` },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "```" + fullText.slice(0, 2500) + "```",
-            },
-          },
-          {
-            type: "context",
-            elements: [
-              {
-                type: "mrkdwn",
-                text: "→ Vsw担当より対応してください",
-              },
-            ],
-          },
-        ],
-      }),
-    });
-  } catch (e: any) {
-    console.warn("[kurichi-bot] slack escalate failed:", e?.message ?? e);
-  }
-}
+// 通知は lib/notifyMail.ts （Resend）に統一。Slack版は廃止。
 
 export async function POST(req: Request) {
   const secret = process.env.LINE_MESSAGING_CHANNEL_SECRET;
@@ -383,7 +325,7 @@ export async function POST(req: Request) {
               await upsertMemory(userId, finalUpdate);
             })();
 
-            // (8) 担当者通知（Slack）
+            // (8) 担当者通知（メール）
             if (escalation.should_handoff) {
               const notif = buildHandoffNotification({
                 userId,
@@ -392,14 +334,19 @@ export async function POST(req: Request) {
                 result: escalation,
                 memory,
               });
-              void notifyEscalateSlack(
+              const mail = buildEscalateMail({
                 userId,
+                category: escalation.category || "重要案件",
+                priority: escalation.priority,
                 userText,
-                finalAnswer,
-                escalation.category || "重要案件",
-                escalation.priority,
-                notif.text
-              );
+                botReply: finalAnswer,
+                fullDetail: notif.text,
+              });
+              void sendNotifyMail({
+                subject: mail.subject,
+                text: mail.text,
+                html: mail.html,
+              });
             }
           } catch (e: any) {
             console.error("[kurichi-bot] claude error:", e?.message ?? e);

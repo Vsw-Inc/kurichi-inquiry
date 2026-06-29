@@ -2,12 +2,11 @@
  * リード受け取りエンドポイント。
  * /lp の問い合わせフォームから POST される。
  *
- * 通知先候補：
- *  - Slack Webhook (LEAD_SLACK_WEBHOOK)
- *  - Email（後日実装）
- *
- * Supabase の leads テーブルに保存（任意・テーブル無ければ skip）。
+ * - 通知：メール（Resend経由・lib/notifyMail.ts）
+ * - 保存：Supabase leads テーブル（未作成なら skip）
  */
+import { sendNotifyMail, buildLeadMail } from "../../../lib/notifyMail";
+
 export const runtime = "nodejs";
 
 type LeadInput = {
@@ -19,52 +18,18 @@ type LeadInput = {
   type?: string;
 };
 
-const TYPE_LABEL: Record<string, string> = {
-  demo: "無料デモ希望",
-  biz: "他社導入の相談",
-  wholesale: "クリチの卸し・取引相談",
-  media: "取材・メディア",
-  other: "その他",
-};
-
 function isEmail(s: string): boolean {
   return /^[\w.+-]+@[\w-]+\.[\w.-]+$/.test(s);
 }
 
-async function notifySlack(payload: Required<LeadInput>) {
-  const url = process.env.LEAD_SLACK_WEBHOOK;
-  if (!url) return;
-  try {
-    await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        text: `🍔 新規リード受領（クリチ Inquiry AI）`,
-        blocks: [
-          {
-            type: "header",
-            text: { type: "plain_text", text: "🍔 新規リード受領" },
-          },
-          {
-            type: "section",
-            fields: [
-              { type: "mrkdwn", text: `*種別*\n${TYPE_LABEL[payload.type] || payload.type}` },
-              { type: "mrkdwn", text: `*お名前*\n${payload.name}` },
-              { type: "mrkdwn", text: `*会社*\n${payload.company || "—"}` },
-              { type: "mrkdwn", text: `*メール*\n${payload.email}` },
-              { type: "mrkdwn", text: `*電話*\n${payload.phone || "—"}` },
-            ],
-          },
-          {
-            type: "section",
-            text: { type: "mrkdwn", text: `*お問い合わせ内容*\n${payload.message}` },
-          },
-        ],
-      }),
-    });
-  } catch (e: any) {
-    console.warn("[lead] slack notify failed:", e?.message ?? e);
-  }
+async function notifyMail(payload: Required<LeadInput>) {
+  const mail = buildLeadMail(payload);
+  await sendNotifyMail({
+    subject: mail.subject,
+    text: mail.text,
+    html: mail.html,
+    replyTo: payload.email,
+  });
 }
 
 async function saveSupabase(payload: Required<LeadInput>) {
@@ -134,8 +99,8 @@ export async function POST(req: Request) {
 
   const payload = { name, company, email, phone, message, type };
 
-  // 通知＋保存（並列・fire-and-forget でも構わないが、失敗ログのため await）
-  await Promise.allSettled([notifySlack(payload), saveSupabase(payload)]);
+  // 通知（メール）＋保存（Supabase）を並列実行・失敗ログのため await
+  await Promise.allSettled([notifyMail(payload), saveSupabase(payload)]);
 
   return new Response(JSON.stringify({ ok: true }), {
     status: 200,
