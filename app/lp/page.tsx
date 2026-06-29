@@ -43,9 +43,33 @@ const steps = [
 ];
 
 export const metadata = {
-  title: "#クリチ Inquiry AI | LINE問い合わせをAIで自動対応",
+  metadataBase: new URL("https://ai.vsw.co.jp"),
+  title: "AI導入支援 | AIクリチちゃんがLINEで答える",
   description:
-    "#クリチ公式LINEの問い合わせにAIが24時間対応。商品FAQ、イベント案内、卸し・コラボ・取材相談のリード獲得まで支援します。Vsw株式会社が提供。",
+    "商品FAQから卸し・取材相談まで。24時間AIが一次対応し、重要案件は担当者へつなぎます。Vsw株式会社が提供。",
+  openGraph: {
+    title: "AI導入支援 | AIクリチちゃんがLINEで答える",
+    description:
+      "商品FAQから卸し・取材相談まで。24時間AIが一次対応し、重要案件は担当者へ。",
+    url: "https://ai.vsw.co.jp/lp",
+    siteName: "Vsw AI導入支援",
+    type: "website",
+    images: [
+      {
+        url: "/ogp-ai-kurichi.png",
+        width: 1200,
+        height: 630,
+        alt: "AIクリチちゃんがLINEで答える AI導入支援",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI導入支援 | AIクリチちゃんがLINEで答える",
+    description:
+      "商品FAQから卸し・取材相談まで。24時間AIが一次対応し、重要案件は担当者へ。",
+    images: ["/ogp-ai-kurichi.png"],
+  },
 };
 
 export default function LP() {
@@ -368,7 +392,18 @@ export default function LP() {
             <h2 className="serif">料金プラン。</h2>
             <p>
               #クリチで構築した問い合わせAIの仕組みは、飲食店・ブランド企業向けにも展開できます。
+              <br />
+              <strong>初回ヒアリング・概算見積もり・簡易デモ案内はすべて無料です。</strong>
             </p>
+            <div className="ku-pricing-freebar">
+              <span>🎁 初回相談 無料</span>
+              <span>📝 お見積もり 無料</span>
+              <span>🎬 簡易デモ案内 無料</span>
+            </div>
+          </div>
+
+          <div className="ku-pricing-campaign">
+            🎉 <strong>先着10社限定キャンペーン</strong> — 初期費用<em>50% OFF</em>　／　年契約で<em>1ヶ月分無料</em>
           </div>
 
           <div className="ku-pricing-grid">
@@ -390,6 +425,11 @@ export default function LP() {
                 <li className="muted">— 会話記憶（なし）</li>
                 <li className="muted">— 有人引き継ぎ判定（なし）</li>
               </ul>
+              <div className="ku-pricing-note">
+                超過時：1,000件ごと +¥5,000
+                <br />
+                Claude API利用料：月 ¥3,000〜¥8,000 別途
+              </div>
             </article>
 
             <article className="ku-pricing featured">
@@ -410,7 +450,13 @@ export default function LP() {
                 <li>✅ Web/LINE 複数チャネル対応</li>
                 <li>✅ 月5,000問い合わせ目安</li>
                 <li>✅ 月次RAG改善＋問い合わせ傾向レポート</li>
+                <li>✅ <strong>月次改善ミーティング</strong>（オンライン60分）</li>
               </ul>
+              <div className="ku-pricing-note">
+                超過時：5,000件ごと +¥20,000
+                <br />
+                Claude API利用料：月 ¥10,000〜¥30,000 別途
+              </div>
             </article>
 
             <article className="ku-pricing">
@@ -429,7 +475,44 @@ export default function LP() {
                 <li>✅ 多言語・海外展開相談</li>
                 <li>✅ SLA・専用運用体制</li>
               </ul>
+              <div className="ku-pricing-note">
+                件数・運用要件に応じてカスタム見積もり
+              </div>
             </article>
+          </div>
+
+          {/* 業種別パッケージ */}
+          <div className="ku-pricing-subhead">
+            <h3 className="serif">業種別スタートパッケージ</h3>
+            <p>業界別の標準FAQ・RAG雛形をあらかじめ込み込み。最短2週間で公開できます。</p>
+          </div>
+          <div className="ku-pricing-packages">
+            <div className="ku-pkg"><span>🍴 飲食・食品ブランド</span><strong>¥35万</strong><em>+ 月¥2万〜</em></div>
+            <div className="ku-pkg"><span>🏋️ フィットネス・スクール・サロン</span><strong>¥45万</strong><em>+ 月¥3万〜</em></div>
+            <div className="ku-pkg"><span>🏠 不動産・モデルハウス</span><strong>¥45万</strong><em>+ 月¥3万〜</em></div>
+            <div className="ku-pkg"><span>⛩ 観光・自治体・神社仏閣</span><strong>¥50万</strong><em>+ 月¥3万〜</em></div>
+          </div>
+
+          {/* オプションメニュー */}
+          <div className="ku-pricing-subhead">
+            <h3 className="serif">追加オプションメニュー</h3>
+            <p>必要なものだけ後から追加できます。</p>
+          </div>
+          <div className="ku-pricing-options">
+            <div className="ku-opt"><strong>多言語対応</strong><span>+¥10万 初期 / +¥1万/月</span></div>
+            <div className="ku-opt"><strong>CRM / Slack / Chatwork 連携</strong><span>+¥15万 初期</span></div>
+            <div className="ku-opt"><strong>追加チャネル(2チャネル目以降)</strong><span>+¥10万 初期 / +¥1万/月</span></div>
+            <div className="ku-opt"><strong>リッチメニュー追加デザイン</strong><span>+¥5万 単発</span></div>
+            <div className="ku-opt"><strong>専用キャラ造形(独自IP化)</strong><span>+¥20万〜¥50万</span></div>
+            <div className="ku-opt"><strong>ナレッジ大幅更新(随時)</strong><span>+¥5万〜 単発</span></div>
+          </div>
+
+          <div className="ku-pricing-finefoot">
+            ※ 上記すべて税別表示。年契約一括払いの場合は1ヶ月分無料。
+            <br />
+            ※ Claude API 利用料は実費としてお客様請求(目安：問い合わせ件数に応じて月¥3,000〜¥30,000)。
+            <br />
+            ※ 解約金・最低契約期間なし。
           </div>
         </section>
 

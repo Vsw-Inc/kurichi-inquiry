@@ -1244,3 +1244,127 @@
   .ku-design-grid { grid-template-columns: 1fr; gap: 14px; }
   .ku-design-card { padding: 22px 18px; }
 }
+
+/* ========== PRICING EXTRAS ========== */
+.ku-pricing-freebar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+.ku-pricing-freebar span {
+  padding: 8px 16px;
+  background: #fff;
+  border: 1.5px solid var(--orange-deep);
+  border-radius: 999px;
+  color: var(--orange-deep);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ku-pricing-campaign {
+  max-width: 880px;
+  margin: 24px auto 28px;
+  padding: 14px 22px;
+  background: linear-gradient(90deg, #fff5f5 0%, #fef2f2 100%);
+  border: 1.5px dashed var(--orange-deep);
+  border-radius: 14px;
+  color: #2a1810;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.7;
+}
+.ku-pricing-campaign em {
+  color: var(--orange-deep);
+  font-style: normal;
+  font-weight: 900;
+}
+
+.ku-pricing-note {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(0,0,0,0.1);
+  color: rgba(38, 23, 16, 0.6);
+  font-size: 11.5px;
+  line-height: 1.65;
+}
+
+.ku-pricing-subhead {
+  margin: 48px 0 16px;
+  text-align: center;
+}
+.ku-pricing-subhead h3 {
+  margin: 0 0 6px;
+  color: var(--ink);
+  font-size: clamp(22px, 2.6vw, 28px);
+}
+.ku-pricing-subhead p {
+  margin: 0;
+  color: rgba(38, 23, 16, 0.65);
+  font-size: 14px;
+}
+
+.ku-pricing-packages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+.ku-pkg {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.ku-pkg span {
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 600;
+}
+.ku-pkg strong {
+  margin-top: 4px;
+  color: var(--orange-deep);
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+.ku-pkg em {
+  color: rgba(38, 23, 16, 0.55);
+  font-size: 12px;
+  font-style: normal;
+}
+
+.ku-pricing-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+}
+.ku-opt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 13.5px;
+}
+.ku-opt strong { color: var(--ink); font-weight: 700; }
+.ku-opt span { color: var(--orange-deep); font-weight: 700; font-size: 13px; }
+
+.ku-pricing-finefoot {
+  max-width: 880px;
+  margin: 32px auto 0;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 10px;
+  color: rgba(38, 23, 16, 0.55);
+  font-size: 12px;
+  line-height: 1.85;
+  text-align: center;
+}
