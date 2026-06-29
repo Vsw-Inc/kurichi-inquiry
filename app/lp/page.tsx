@@ -402,10 +402,6 @@ export default function LP() {
             </div>
           </div>
 
-          <div className="ku-pricing-campaign">
-            🎉 <strong>先着10社限定キャンペーン</strong> — 初期費用<em>50% OFF</em>　／　年契約で<em>1ヶ月分無料</em>
-          </div>
-
           <div className="ku-pricing-grid">
             <article className="ku-pricing">
               <div className="ku-pricing-tier">STARTER</div>
@@ -420,7 +416,7 @@ export default function LP() {
                 <li>✅ RAGナレッジ回答</li>
                 <li>✅ 基本FAQ自動応答</li>
                 <li>✅ LINEまたはWeb 1チャネル</li>
-                <li>✅ 月1,000問い合わせ目安</li>
+                <li>✅ 月1,000問い合わせまで</li>
                 <li>✅ 月1回の軽微なRAG更新</li>
                 <li className="muted">— 会話記憶（なし）</li>
                 <li className="muted">— 有人引き継ぎ判定（なし）</li>
@@ -448,7 +444,7 @@ export default function LP() {
                 <li>✅ <strong>有人引き継ぎ判定</strong>（卸し・取材・コラボ検知）</li>
                 <li>✅ 法人問い合わせ整理＋担当者通知</li>
                 <li>✅ Web/LINE 複数チャネル対応</li>
-                <li>✅ 月5,000問い合わせ目安</li>
+                <li>✅ 月5,000問い合わせまで</li>
                 <li>✅ 月次RAG改善＋問い合わせ傾向レポート</li>
                 <li>✅ <strong>月次改善ミーティング</strong>（オンライン60分）</li>
               </ul>
