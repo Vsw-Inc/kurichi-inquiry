@@ -286,3 +286,121 @@
   .kadmin-tbl { font-size: 11.5px; }
   .kadmin-tbl th, .kadmin-tbl td { padding: 8px 10px; }
 }
+
+/* ========== USER DETAIL ========== */
+.kadmin-chiplink {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 8px;
+  background: #fff;
+  border: 1px solid rgba(217, 110, 30, 0.35);
+  border-radius: 999px;
+  color: #b21e2c;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.kadmin-chiplink:hover { background: #b21e2c; color: #fff; }
+
+.kadmin-user-meta {
+  margin-top: 6px;
+  color: rgba(38, 23, 16, 0.62);
+  font-size: 12.5px;
+}
+.kadmin-user-meta code {
+  padding: 2px 6px;
+  background: rgba(0,0,0,0.04);
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.kadmin-note {
+  margin: 8px 0 16px;
+  color: rgba(38, 23, 16, 0.62);
+  font-size: 13px;
+}
+
+.kadmin-push-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  background: #fff;
+  border: 1px solid rgba(178, 30, 44, 0.2);
+  border-radius: 12px;
+}
+.kadmin-push-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.7;
+  resize: vertical;
+}
+.kadmin-push-form textarea:focus {
+  outline: none;
+  border-color: #b21e2c;
+  box-shadow: 0 0 0 3px rgba(178,30,44,0.12);
+}
+.kadmin-push-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.kadmin-push-count {
+  color: rgba(38, 23, 16, 0.5);
+  font-size: 12px;
+}
+.kadmin-btn {
+  padding: 10px 22px;
+  background: #b21e2c;
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.kadmin-btn:hover:not(:disabled) { background: #8e1822; }
+.kadmin-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.kadmin-push-msg {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+.kadmin-push-msg.ok { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+.kadmin-push-msg.err { background: #fef2f2; color: #b21e2c; border: 1px solid #fecaca; }
+
+.kadmin-chatlist { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.kadmin-chatitem {
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 10px;
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+.kadmin-chatitem.is-admin { background: #fff8f0; border-color: rgba(178, 30, 44, 0.35); }
+.kadmin-chatitem.is-escalate { background: #fef2f2; border-color: #fecaca; }
+.kadmin-chat-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 11.5px;
+  color: rgba(38, 23, 16, 0.55);
+}
+.kadmin-chat-q, .kadmin-chat-a { margin: 4px 0; }
+.kadmin-chat-q strong, .kadmin-chat-a strong {
+  display: inline-block;
+  margin-right: 6px;
+  color: #b21e2c;
+  font-size: 12px;
+  font-weight: 800;
+}
+.bdg.accent { background: #b21e2c; color: #fff; }

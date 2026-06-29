@@ -168,8 +168,27 @@ export default async function AdminPage() {
                     ) : (
                       <span className="bdg">LINE</span>
                     )}
+                    {c.user_id && (
+                      <>
+                        <br />
+                        <Link
+                          href={`/admin/user/${encodeURIComponent(c.user_id)}`}
+                          className="kadmin-chiplink"
+                        >
+                          📤 個別
+                        </Link>
+                      </>
+                    )}
                   </td>
-                  <td className="q">{c.question}</td>
+                  <td className="q">
+                    {c.user_id ? (
+                      <Link href={`/admin/user/${encodeURIComponent(c.user_id)}`}>
+                        {c.question}
+                      </Link>
+                    ) : (
+                      c.question
+                    )}
+                  </td>
                   <td className="a">{c.answer_preview || "—"}</td>
                   <td className="cite">{c.citation || "—"}</td>
                 </tr>
