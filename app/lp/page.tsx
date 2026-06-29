@@ -1,5 +1,5 @@
 import Link from "next/link";
-import SplineHero from "./SplineHero";
+import KurichiHero from "./KurichiHero";
 import LeadForm from "./LeadForm";
 import "./lp.css";
 
@@ -53,7 +53,7 @@ export default function LP() {
             </div>
           </div>
           <div className="ku-hero-vis">
-            <SplineHero />
+            <KurichiHero />
           </div>
         </div>
       </section>
